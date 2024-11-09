@@ -51,17 +51,19 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="180"/>
                             <ColumnDefinition Width="900*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+
+                        <Border Grid.RowSpan="5" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1"/>
 
                         <TextBlock Text="{Binding TourName}" FontSize="24" Grid.Row="0" Grid.Column="1"/>
 
@@ -85,8 +87,8 @@
 
                         <Button Name="EditBtn" Content="Редактировать" Grid.RowSpan="5" Grid.Column="2" Click="EditBtn_Click" Margin="30"/>
 
-                        <Image Width="150" Height="100" Grid.Column="0" Grid.RowSpan="5"
-                               Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+                        <Image Width="150" Height="150" Grid.Column="0" Grid.RowSpan="5"
+                               Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image.Source>
                                 <Binding Path="TourPhoto">
                                     <Binding.TargetNullValue>
