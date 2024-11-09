@@ -1,0 +1,105 @@
+﻿<Page x:Class="ShafikovTours.TourPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShafikovTours"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1400"
+      Title="TourPage" FontFamily = "Arial" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBox Name="SearchTBox" Width="350" FontSize="20" Margin="5" TextChanged="SearchTBox_TextChanged"/>
+            <ComboBox Name="PriceCombo" Width="200" FontSize="20" Margin="5" SelectionChanged="PriceCombo_SelectionChanged">
+                <TextBlock>По цене</TextBlock>
+                <TextBlock>По возрастанию</TextBlock>
+                <TextBlock>По убыванию</TextBlock>
+            </ComboBox>
+            <ComboBox Name="HouseCombo" Width="200" FontSize="20" Margin="5" SelectionChanged="HouseCombo_SelectionChanged">
+                <TextBlock>Тип проживания</TextBlock>
+                <TextBlock>Отель</TextBlock>
+                <TextBlock>Гостиница</TextBlock>
+            </ComboBox>
+            <ComboBox Name="TransportCombo" Width="200" FontSize="20" Margin="5" SelectionChanged="TransportCombo_SelectionChanged">
+                <TextBlock>Тип транспорта</TextBlock>
+                <TextBlock>Автобус</TextBlock>
+                <TextBlock>Поезд</TextBlock>
+                <TextBlock>Самолёт</TextBlock>
+            </ComboBox>
+
+            <Button Name="AddBtn" Content="Добавить" Click="AddBtn_Click"/>
+        </StackPanel>
+
+        <Border Grid.Row="4" Background="#FF00CEAD"></Border>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <TextBlock Name="atProductCountTB" Height="35" Width="40" FontSize="22"/>
+            <TextBlock Text=" из " Height="35" Width="40" FontSize="22"/>
+            <TextBlock Name="allProductCountTB" Height="35" Width="40" FontSize="22"/>
+        </StackPanel>
+
+        <ListView Name="TourList" Grid.Row="2" VirtualizingPanel.ScrollUnit="Pixel" HorizontalContentAlignment="Stretch" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="900*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding TourName}" FontSize="24" Grid.Row="0" Grid.Column="1"/>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock Text="Транспорт: " FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="{Binding TourTransportType}" FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock Text="Тип проживания: " FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="{Binding TourHousingType}" FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock Text="Город: " FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="{Binding TourCity}" FontSize="18" Grid.Row="0" Grid.Column="1"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock Text="Цена в день: " FontSize="18"/>
+                            <TextBlock Text="{Binding TourDayPrice}" FontSize="18"/>
+                            <TextBlock Text=" руб." FontSize="18"/>
+                        </StackPanel>
+
+                        <Button Name="EditBtn" Content="Редактировать" Grid.RowSpan="5" Grid.Column="2" Click="EditBtn_Click" Margin="30"/>
+
+                        <Image Width="150" Height="100" Grid.Column="0" Grid.RowSpan="5"
+                               Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+                            <Image.Source>
+                                <Binding Path="TourPhoto">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>
+                                            imges\picture.png
+                                        </ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

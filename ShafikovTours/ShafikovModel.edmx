@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TravelAgencyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientFirstName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientLastName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientPatronymic" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClientPasSeries" Type="nvarchar" MaxLength="40" />
+          <Property Name="ClientPasNumb" Type="nchar" MaxLength="6" />
+          <Property Name="ClientBirthday" Type="date" Nullable="false" />
+          <Property Name="ClientCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientCopy">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ClientFirstName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientLastName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientPatronymic" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClientPassData" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientBirthday" Type="date" Nullable="false" />
+          <Property Name="ClientCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Housing">
+          <Key>
+            <PropertyRef Name="HousingID" />
+          </Key>
+          <Property Name="HousingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HousingName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="HousingCategory" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HousingLiveCondDiscript" Type="nvarchar(max)" />
+          <Property Name="HousingDayPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HousingType">
+          <Key>
+            <PropertyRef Name="HousingTypeID" />
+          </Key>
+          <Property Name="HousingTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HousingTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pension">
+          <Key>
+            <PropertyRef Name="PensionID" />
+          </Key>
+          <Property Name="PensionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PensionName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PensionCountry" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PensionCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PensionAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PensionPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PensionTerritoryDiscription" Type="nvarchar(max)" />
+          <Property Name="PensionRoomCount" Type="int" />
+          <Property Name="PensionPool" Type="bit" Nullable="false" />
+          <Property Name="PensionMedService" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PensionSpa" Type="bit" Nullable="false" />
+          <Property Name="PensionLvl" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PensionSeaDistanceKm" Type="float" />
+          <Property Name="HousingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="TourID" />
+          </Key>
+          <Property Name="TourID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TourEatType" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TourDayPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TourCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TourPhoto" Type="nvarchar(max)" />
+          <Property Name="HousingTypeID" Type="int" Nullable="false" />
+          <Property Name="TransportID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourSell">
+          <Key>
+            <PropertyRef Name="TourSellID" />
+          </Key>
+          <Property Name="TourSellID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="TourSellPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TourSellDurationDay" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransportName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TravelPack">
+          <Key>
+            <PropertyRef Name="TravelPackID" />
+          </Key>
+          <Property Name="TravelPackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="PensionID" Type="int" Nullable="false" />
+          <Property Name="TravelPackArrivData" Type="date" Nullable="false" />
+          <Property Name="TravelPackDepartDate" Type="date" Nullable="false" />
+          <Property Name="TravelPackChild" Type="bit" Nullable="false" />
+          <Property Name="TravelPackMedInsur" Type="bit" Nullable="false" />
+          <Property Name="TravelPackPeopleCount" Type="int" Nullable="false" />
+          <Property Name="TravelPackPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pension_Housing">
+          <End Role="Housing" Type="Self.Housing" Multiplicity="1" />
+          <End Role="Pension" Type="Self.Pension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Housing">
+              <PropertyRef Name="HousingID" />
+            </Principal>
+            <Dependent Role="Pension">
+              <PropertyRef Name="HousingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_HousingType">
+          <End Role="HousingType" Type="Self.HousingType" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingType">
+              <PropertyRef Name="HousingTypeID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="HousingTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="TransportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourSell_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TourSell" Type="Self.TourSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TourSell">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourSell_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourSell" Type="Self.TourSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="TourID" />
+            </Principal>
+            <Dependent Role="TourSell">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TravelPack_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TravelPack" Type="Self.TravelPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TravelPack">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TravelPack_Pension">
+          <End Role="Pension" Type="Self.Pension" Multiplicity="1" />
+          <End Role="TravelPack" Type="Self.TravelPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pension">
+              <PropertyRef Name="PensionID" />
+            </Principal>
+            <Dependent Role="TravelPack">
+              <PropertyRef Name="PensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TravelAgencyModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientCopy" EntityType="Self.ClientCopy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Housing" EntityType="Self.Housing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HousingType" EntityType="Self.HousingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pension" EntityType="Self.Pension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourSell" EntityType="Self.TourSell" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transport" EntityType="Self.Transport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TravelPack" EntityType="Self.TravelPack" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pension_Housing" Association="Self.FK_Pension_Housing">
+            <End Role="Housing" EntitySet="Housing" />
+            <End Role="Pension" EntitySet="Pension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_HousingType" Association="Self.FK_Tour_HousingType">
+            <End Role="HousingType" EntitySet="HousingType" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Transport" Association="Self.FK_Tour_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourSell_Client" Association="Self.FK_TourSell_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TourSell" EntitySet="TourSell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourSell_Tour" Association="Self.FK_TourSell_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourSell" EntitySet="TourSell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TravelPack_Client" Association="Self.FK_TravelPack_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TravelPack" EntitySet="TravelPack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TravelPack_Pension" Association="Self.FK_TravelPack_Pension">
+            <End Role="Pension" EntitySet="Pension" />
+            <End Role="TravelPack" EntitySet="TravelPack" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TravelAgencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientFirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientLastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPatronymic" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPasSeries" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPasNumb" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="ClientBirthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClientCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TourSell" Relationship="Self.FK_TourSell_Client" FromRole="Client" ToRole="TourSell" />
+          <NavigationProperty Name="TravelPack" Relationship="Self.FK_TravelPack_Client" FromRole="Client" ToRole="TravelPack" />
+        </EntityType>
+        <EntityType Name="ClientCopy">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ClientFirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientLastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPatronymic" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPassData" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientBirthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClientCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Housing">
+          <Key>
+            <PropertyRef Name="HousingID" />
+          </Key>
+          <Property Name="HousingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HousingName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HousingCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HousingLiveCondDiscript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HousingDayPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Pension" Relationship="Self.FK_Pension_Housing" FromRole="Housing" ToRole="Pension" />
+        </EntityType>
+        <EntityType Name="HousingType">
+          <Key>
+            <PropertyRef Name="HousingTypeID" />
+          </Key>
+          <Property Name="HousingTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HousingTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_Tour_HousingType" FromRole="HousingType" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="Pension">
+          <Key>
+            <PropertyRef Name="PensionID" />
+          </Key>
+          <Property Name="PensionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PensionName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionTerritoryDiscription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PensionRoomCount" Type="Int32" />
+          <Property Name="PensionPool" Type="Boolean" Nullable="false" />
+          <Property Name="PensionMedService" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionSpa" Type="Boolean" Nullable="false" />
+          <Property Name="PensionLvl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PensionSeaDistanceKm" Type="Double" />
+          <Property Name="HousingID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Housing" Relationship="Self.FK_Pension_Housing" FromRole="Pension" ToRole="Housing" />
+          <NavigationProperty Name="TravelPack" Relationship="Self.FK_TravelPack_Pension" FromRole="Pension" ToRole="TravelPack" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="TourID" />
+          </Key>
+          <Property Name="TourID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TourEatType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TourDayPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TourCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TourPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HousingTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TransportID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HousingType" Relationship="Self.FK_Tour_HousingType" FromRole="Tour" ToRole="HousingType" />
+          <NavigationProperty Name="Transport" Relationship="Self.FK_Tour_Transport" FromRole="Tour" ToRole="Transport" />
+          <NavigationProperty Name="TourSell" Relationship="Self.FK_TourSell_Tour" FromRole="Tour" ToRole="TourSell" />
+        </EntityType>
+        <EntityType Name="TourSell">
+          <Key>
+            <PropertyRef Name="TourSellID" />
+          </Key>
+          <Property Name="TourSellID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="TourSellPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TourSellDurationDay" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_TourSell_Client" FromRole="TourSell" ToRole="Client" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_TourSell_Tour" FromRole="TourSell" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransportName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_Tour_Transport" FromRole="Transport" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="TravelPack">
+          <Key>
+            <PropertyRef Name="TravelPackID" />
+          </Key>
+          <Property Name="TravelPackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="PensionID" Type="Int32" Nullable="false" />
+          <Property Name="TravelPackArrivData" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TravelPackDepartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TravelPackChild" Type="Boolean" Nullable="false" />
+          <Property Name="TravelPackMedInsur" Type="Boolean" Nullable="false" />
+          <Property Name="TravelPackPeopleCount" Type="Int32" Nullable="false" />
+          <Property Name="TravelPackPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_TravelPack_Client" FromRole="TravelPack" ToRole="Client" />
+          <NavigationProperty Name="Pension" Relationship="Self.FK_TravelPack_Pension" FromRole="TravelPack" ToRole="Pension" />
+        </EntityType>
+        <Association Name="FK_TourSell_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TourSell" Type="Self.TourSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TourSell">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TravelPack_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="TravelPack" Type="Self.TravelPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TravelPack">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pension_Housing">
+          <End Role="Housing" Type="Self.Housing" Multiplicity="1" />
+          <End Role="Pension" Type="Self.Pension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Housing">
+              <PropertyRef Name="HousingID" />
+            </Principal>
+            <Dependent Role="Pension">
+              <PropertyRef Name="HousingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_HousingType">
+          <End Role="HousingType" Type="Self.HousingType" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingType">
+              <PropertyRef Name="HousingTypeID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="HousingTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TravelPack_Pension">
+          <End Role="Pension" Type="Self.Pension" Multiplicity="1" />
+          <End Role="TravelPack" Type="Self.TravelPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pension">
+              <PropertyRef Name="PensionID" />
+            </Principal>
+            <Dependent Role="TravelPack">
+              <PropertyRef Name="PensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="TransportID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="TransportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourSell_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourSell" Type="Self.TourSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="TourID" />
+            </Principal>
+            <Dependent Role="TourSell">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TravelAgencyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="ClientCopy" EntityType="Self.ClientCopy" />
+          <EntitySet Name="Housing" EntityType="Self.Housing" />
+          <EntitySet Name="HousingType" EntityType="Self.HousingType" />
+          <EntitySet Name="Pension" EntityType="Self.Pension" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" />
+          <EntitySet Name="TourSell" EntityType="Self.TourSell" />
+          <EntitySet Name="Transport" EntityType="Self.Transport" />
+          <EntitySet Name="TravelPack" EntityType="Self.TravelPack" />
+          <AssociationSet Name="FK_TourSell_Client" Association="Self.FK_TourSell_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TourSell" EntitySet="TourSell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TravelPack_Client" Association="Self.FK_TravelPack_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="TravelPack" EntitySet="TravelPack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pension_Housing" Association="Self.FK_Pension_Housing">
+            <End Role="Housing" EntitySet="Housing" />
+            <End Role="Pension" EntitySet="Pension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_HousingType" Association="Self.FK_Tour_HousingType">
+            <End Role="HousingType" EntitySet="HousingType" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TravelPack_Pension" Association="Self.FK_TravelPack_Pension">
+            <End Role="Pension" EntitySet="Pension" />
+            <End Role="TravelPack" EntitySet="TravelPack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Transport" Association="Self.FK_Tour_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourSell_Tour" Association="Self.FK_TourSell_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourSell" EntitySet="TourSell" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TravelAgencyModelContainer" CdmEntityContainer="TravelAgencyEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="TravelAgencyModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientFirstName" ColumnName="ClientFirstName" />
+                <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+                <ScalarProperty Name="ClientPatronymic" ColumnName="ClientPatronymic" />
+                <ScalarProperty Name="ClientPasSeries" ColumnName="ClientPasSeries" />
+                <ScalarProperty Name="ClientPasNumb" ColumnName="ClientPasNumb" />
+                <ScalarProperty Name="ClientBirthday" ColumnName="ClientBirthday" />
+                <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientCopy">
+            <EntityTypeMapping TypeName="TravelAgencyModel.ClientCopy">
+              <MappingFragment StoreEntitySet="ClientCopy">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientFirstName" ColumnName="ClientFirstName" />
+                <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+                <ScalarProperty Name="ClientPatronymic" ColumnName="ClientPatronymic" />
+                <ScalarProperty Name="ClientPassData" ColumnName="ClientPassData" />
+                <ScalarProperty Name="ClientBirthday" ColumnName="ClientBirthday" />
+                <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Housing">
+            <EntityTypeMapping TypeName="TravelAgencyModel.Housing">
+              <MappingFragment StoreEntitySet="Housing">
+                <ScalarProperty Name="HousingID" ColumnName="HousingID" />
+                <ScalarProperty Name="HousingName" ColumnName="HousingName" />
+                <ScalarProperty Name="HousingCategory" ColumnName="HousingCategory" />
+                <ScalarProperty Name="HousingLiveCondDiscript" ColumnName="HousingLiveCondDiscript" />
+                <ScalarProperty Name="HousingDayPrice" ColumnName="HousingDayPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HousingType">
+            <EntityTypeMapping TypeName="TravelAgencyModel.HousingType">
+              <MappingFragment StoreEntitySet="HousingType">
+                <ScalarProperty Name="HousingTypeID" ColumnName="HousingTypeID" />
+                <ScalarProperty Name="HousingTypeName" ColumnName="HousingTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pension">
+            <EntityTypeMapping TypeName="TravelAgencyModel.Pension">
+              <MappingFragment StoreEntitySet="Pension">
+                <ScalarProperty Name="PensionID" ColumnName="PensionID" />
+                <ScalarProperty Name="PensionName" ColumnName="PensionName" />
+                <ScalarProperty Name="PensionCountry" ColumnName="PensionCountry" />
+                <ScalarProperty Name="PensionCity" ColumnName="PensionCity" />
+                <ScalarProperty Name="PensionAddress" ColumnName="PensionAddress" />
+                <ScalarProperty Name="PensionPhone" ColumnName="PensionPhone" />
+                <ScalarProperty Name="PensionTerritoryDiscription" ColumnName="PensionTerritoryDiscription" />
+                <ScalarProperty Name="PensionRoomCount" ColumnName="PensionRoomCount" />
+                <ScalarProperty Name="PensionPool" ColumnName="PensionPool" />
+                <ScalarProperty Name="PensionMedService" ColumnName="PensionMedService" />
+                <ScalarProperty Name="PensionSpa" ColumnName="PensionSpa" />
+                <ScalarProperty Name="PensionLvl" ColumnName="PensionLvl" />
+                <ScalarProperty Name="PensionSeaDistanceKm" ColumnName="PensionSeaDistanceKm" />
+                <ScalarProperty Name="HousingID" ColumnName="HousingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tour">
+            <EntityTypeMapping TypeName="TravelAgencyModel.Tour">
+              <MappingFragment StoreEntitySet="Tour">
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="TourName" ColumnName="TourName" />
+                <ScalarProperty Name="TourEatType" ColumnName="TourEatType" />
+                <ScalarProperty Name="TourDayPrice" ColumnName="TourDayPrice" />
+                <ScalarProperty Name="TourCity" ColumnName="TourCity" />
+                <ScalarProperty Name="TourPhoto" ColumnName="TourPhoto" />
+                <ScalarProperty Name="HousingTypeID" ColumnName="HousingTypeID" />
+                <ScalarProperty Name="TransportID" ColumnName="TransportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourSell">
+            <EntityTypeMapping TypeName="TravelAgencyModel.TourSell">
+              <MappingFragment StoreEntitySet="TourSell">
+                <ScalarProperty Name="TourSellID" ColumnName="TourSellID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="TourSellPrice" ColumnName="TourSellPrice" />
+                <ScalarProperty Name="TourSellDurationDay" ColumnName="TourSellDurationDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transport">
+            <EntityTypeMapping TypeName="TravelAgencyModel.Transport">
+              <MappingFragment StoreEntitySet="Transport">
+                <ScalarProperty Name="TransportID" ColumnName="TransportID" />
+                <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TravelPack">
+            <EntityTypeMapping TypeName="TravelAgencyModel.TravelPack">
+              <MappingFragment StoreEntitySet="TravelPack">
+                <ScalarProperty Name="TravelPackID" ColumnName="TravelPackID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="PensionID" ColumnName="PensionID" />
+                <ScalarProperty Name="TravelPackArrivData" ColumnName="TravelPackArrivData" />
+                <ScalarProperty Name="TravelPackDepartDate" ColumnName="TravelPackDepartDate" />
+                <ScalarProperty Name="TravelPackChild" ColumnName="TravelPackChild" />
+                <ScalarProperty Name="TravelPackMedInsur" ColumnName="TravelPackMedInsur" />
+                <ScalarProperty Name="TravelPackPeopleCount" ColumnName="TravelPackPeopleCount" />
+                <ScalarProperty Name="TravelPackPrice" ColumnName="TravelPackPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

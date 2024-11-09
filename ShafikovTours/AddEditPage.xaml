@@ -1,0 +1,77 @@
+﻿<Page x:Class="ShafikovTours.AddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShafikovTours"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1400"
+      Title="AddEditPage" FontFamily="Arial">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Название тура " Grid.Row="0" Grid.Column="1" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Name="TourNameTBox" Text="{Binding TourName}" Grid.Row="0" Grid.Column="2" Margin="5" Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock Text="Тип питания " Grid.Row="0" Grid.Column="3" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Name="EatTBox" Text="{Binding TourEatType}" Grid.Row="0" Grid.Column="4" Margin="5" Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock Text="Транспорт " Grid.Row="1" Grid.Column="1" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox Name="TransportTBox" Grid.Row="1" Grid.Column="2"
+                  Margin="5" Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
+                  SelectionChanged="TransportTBox_SelectionChanged">
+            <TextBlock></TextBlock>
+            <TextBlock>Автобус</TextBlock>
+            <TextBlock>Поезд</TextBlock>
+            <TextBlock>Самолёт</TextBlock>
+        </ComboBox>
+
+        <TextBlock Text="Тип проживания " Grid.Row="2" Grid.Column="1" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox Name="HousingTBox" Grid.Row="2" Grid.Column="2" Margin="5" 
+                  Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
+                  SelectionChanged="HousingTBox_SelectionChanged">
+            <TextBlock></TextBlock>
+            <TextBlock>Гостиница</TextBlock>
+            <TextBlock>Отель</TextBlock>
+        </ComboBox>
+
+        <TextBlock Text="Город " Grid.Row="1" Grid.Column="3" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Name="CityTBox" Text="{Binding TourCity}" Grid.Row="1" Grid.Column="4" Margin="5" Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock Text="Цена " Grid.Row="2" Grid.Column="3" FontSize="24" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Name="PriceTBox" Text="{Binding TourDayPrice}" Grid.Row="2" Grid.Column="4" Margin="5" Width="250" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock Text="Логотип "  Grid.Row="0" Grid.Column="5" FontSize="24" Margin="15" VerticalAlignment="Bottom"  HorizontalAlignment="Center"/>
+        <Image Name="LogoImage" Stretch="Uniform" Height="250" Width="250"
+       HorizontalAlignment="Center" Margin="15" Grid.RowSpan="3" Grid.Column="5" VerticalAlignment="Center">
+            <Image.Source>
+                <Binding Path="TourPhoto">
+                    <Binding.TargetNullValue>
+                        <ImageSource>
+                            imges\picture.png
+                        </ImageSource>
+                    </Binding.TargetNullValue>
+                </Binding>
+            </Image.Source>
+        </Image>
+        <Button Content="Изменить" Name="ChangePictureBtn" Click="ChangePictureBtn_Click" Grid.Row="2" Grid.Column="5" VerticalAlignment="Bottom"/>
+
+        <Button Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Grid.Row="3" Grid.Column="2"/>
+        <Button Name="DelBtn" Content="Удалить" Click="DelBtn_Click"  Grid.Row="3" Grid.Column="4" Visibility="Hidden"/>
+    </Grid>
+</Page>
